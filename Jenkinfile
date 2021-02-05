@@ -1,0 +1,21 @@
+pipeline {
+  agent any
+  tools {
+    nodejs 'nodejs'
+  }
+  stages {
+    stage('Get Latest Git Repo') {
+      steps {
+        // Get some code from a GitHub repository
+        git 'http://35.229.27.9/Amirtaraj/teammap.git'
+      }
+    }
+    stage('Run UI Tests') {
+      steps {
+        // Get some code from a GitHub repository
+        sh 'npm run install:all'
+        sh 'npm test'
+      }
+    }
+  }
+}
